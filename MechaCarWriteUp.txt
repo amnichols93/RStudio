@@ -1,0 +1,33 @@
+Before performing any analysis, the significance level for this project was set at 0.05.
+
+---
+MPG Regression
+
+I did a correlation matrix of the MechaCar_mpg dataset to quickly identify which variables have a statistical correlation.  Regarding "mpg," there is statistically no correlation with the "vehicle.weight," "spoiler.angle," and "AWD"; there is a statistically weak correlation with the "ground.clearance"; there is a statistically moderate correlation with "vehicle.length."
+
+Did a summary of the multiple linear regression with the mpg as Y and all of the other columns as the comparative values, and received a Multiple R-Squared value of 0.71. Did a summary of the multiple linear regression with the mpg as Y and only vehicle.length and ground.clearance as the comparative values, and received a Multiple R-Squared value of 0.67. I then did the same test with only "vehicle.length" as the comparative value, since that is the only variable with a statistically moderate correlation to the mpg, and the R-Squared value was even less at 0.37. My conclusion from those three calculations is that, while "vehicle.weight," "spoiler.angle," and "AWD" do not individually correlate to the mpg values according to the p-values, and while "ground.clearance" has only a "weak" correlation, they increase the overall correlation between mpg and "vehicle.length." 
+
+The p-values of our linear regression analysis for vehicle.length is 2.60e-12 and for ground.clearance is 5.21e-08, which is smaller than our significance level of 0.05. Therefore, there is sufficient evidence to reject our null hypothesis, and the slope of our linear model is not zero.
+
+In addition, the p-value of the intercet is statistically significant (5.08e-08), indicating that there may be unrecorded factors contributing to the mpg value trends.
+
+--
+Suspension Coil Summary
+
+The summary table shows that the PSI data is not skewed left or right, since the mean is 1499.531 and the median is 1499.747. Additionally, over all 150 vehicles measured, the standard deviation is 8.7 and the variance is 76.2. Given that the variance of the suspension coils must not exceed 100 pounds per inch, the data provides enough information to conclude that the current manufacturing data meets the design specification.
+
+---
+Suspension Coil T-Test
+
+First, it should be said that the results from the shapiro.test() function indicate that the Suspension_Coil$PSI data is not normally distributed, as the p-value came out to be 6.011e-11, well below the 0.05 threshold. Given that the data is not normally distributed, we do not meet the standards required to perform the t-test.
+
+If we perform the t-test anyway, against the given population mean of 1500, the results indicate a p-value greater than our significance level of 0.05 (0.51), meaning that there is no statistical difference between the dataset mean and the population mean.
+
+---
+Design Your Own Study
+
+Vehicle metrics that I think would be of most interest to a consumer are: fuel efficiency and tank size; towing capacity; cost; interior and exterior color options; style variation (stuck, SUV, sedan, two-door, etc.); trunk space; four-wheel drive capability; speed and acceleration; manufacturing location; brand loyalty.
+
+The question we would ask is which of those factors, or combination thereof, most contributes to a consumer's decision to purchase a vehicle. The null hypothesis is that none of these factors have any statistical correlation to a consumer's vehicle choice, while the alternatice hypothesis is that one or more factors does statistically contribute to a consumer's decision. Once we have identified the key factors using t.tests, matrices, and regression lines, we would then need to identify the values of those factors that are most appealing to consumers and compare them to the values produced by the current line of MechaCars.
+
+We would need to collect sales data from all major dealers that calculated for all factors indicated above. The only data point that would not be indicated in the individual purchase data would be brand loyalty. For brand loyalty, we would need to either do a random survey or see if dealerships maintain data regarding their repeat consumer base.
